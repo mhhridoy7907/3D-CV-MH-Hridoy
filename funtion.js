@@ -1,4 +1,4 @@
-// Auto left-right rotation
+
 const cv = document.getElementById('cv');
 let angle = 0;
 function autoRotate() {
