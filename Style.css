@@ -1,0 +1,97 @@
+/* Reset box-sizing to include padding/border in width */
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+    margin:0; padding:0;
+    background:#0a0a0a;
+    display:flex; justify-content:center; align-items:center;
+    height:100vh;
+    perspective:2000px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow:hidden;
+}
+
+/* CV container centered & full A4 size */
+.cv-outline {
+    width:210mm;
+    height:297mm;
+    max-width:90vw;
+    max-height:95vh;
+    border:3px solid #00ffff;
+    border-radius:10px;
+    background: linear-gradient(135deg,#111 0%,#1c1c1c 100%);
+    padding:15px;
+    display:grid;
+    grid-template-columns:1fr 2fr;
+    gap:15px;
+    box-shadow:0 0 60px rgba(0,255,255,0.4);
+    transform-style: preserve-3d;
+    overflow: hidden; /* Ensure nothing spills out */
+}
+
+/* Columns */
+.left-column {
+    border-right:2px solid #ff00ff;
+    padding:10px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    overflow: hidden;
+}
+.right-column {
+    padding-left:10px;
+    overflow: hidden;
+}
+
+/* Neon headings */
+h1 { color:#00ffff; text-shadow:0 0 15px #00ffff; font-size:28px; text-align:center; margin:5px 0; }
+h2 { color:#ff00ff; text-shadow:0 0 12px #ff00ff; font-size:18px; border-bottom:2px solid #ff00ff; padding-bottom:3px; margin:8px 0; }
+h3 { color:#00ffff; text-shadow:0 0 8px #00ffff; font-size:14px; margin:3px 0; }
+
+/* Sections */
+.section {
+    background: rgba(10,10,10,0.85);
+    padding:10px;
+    margin-bottom:10px;
+    border-radius:10px;
+    box-shadow:0 0 30px rgba(0,255,255,0.2),0 0 50px rgba(255,0,255,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    overflow: hidden; /* prevent text spill */
+}
+.section:hover {
+    transform: translateZ(20px) rotateY(5deg);
+    box-shadow:0 0 50px #00ffff,0 0 70px #ff00ff;
+}
+
+/* Profile photo */
+.photo {
+    width:90px; height:90px;
+    border-radius:50%;
+    border:3px solid #00ffff;
+    margin-bottom:8px;
+    box-shadow:0 0 20px #00ffff,0 0 30px #ff00ff;
+    object-fit: cover;
+}
+
+/* Skills */
+.skill { margin-bottom:8px; width:100%; }
+.skill-name { font-weight:bold; color:#fff; text-shadow:0 0 5px #00ffff; margin-bottom:3px; font-size:13px; }
+.skill-bar { width:100%; height:10px; border-radius:10px; background:#222; overflow:hidden; box-shadow: inset 0 0 5px #00ffff; }
+.skill-fill {
+    height:10px; border-radius:10px;
+    width:0; background: linear-gradient(90deg,#00ffff,#ff00ff);
+    animation: fillSkill 1.5s forwards;
+    box-shadow:0 0 8px #00ffff,0 0 12px #ff00ff;
+}
+@keyframes fillSkill { from {width:0%;} to {width: var(--skill-percent);} }
+
+/* Lists */
+ul { margin-left:18px; color:#ddd; font-size:13px; }
+a { color:#00ffff; text-decoration:none; }
+a:hover { color:#ff00ff; text-shadow:0 0 10px #ff00ff; }
+
+/* Adjust paragraph font size for fitting */
+p { font-size:13px; line-height:1.2; margin:2px 0; }
+
+/* Ensure everything fits within A4 */
+.left-column, .right-column { max-height: calc(100% - 20px); overflow-y: auto; }
